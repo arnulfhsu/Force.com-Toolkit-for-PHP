@@ -540,7 +540,16 @@ class SforceBaseClient
     {
         $anyString = '';
         foreach ($fields as $key => $value) {
-            $anyString = $anyString . '<' . $key . '>' . $value . '</' . $key . '>';
+
+            //to handle arrays for creating and updating records
+            if (!empty($value) && is_array($value)) {
+                foreach ($value as $k => $v) {
+                    $anyString .= '<'.$key.'>' . $v . '</'.$key.'>';
+                }
+            } else {
+                $anyString = $anyString . '<' . $key . '>' . $value . '</' . $key . '>';
+            }
+
         }
 
         return $anyString;

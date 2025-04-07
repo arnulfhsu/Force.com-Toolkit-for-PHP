@@ -111,8 +111,8 @@ class SObject
                     }
                 }
             } catch (Exception $e) {
-                error_log('salesforce exception: ', $e->getMessage());
-                error_log('salesforce exception: ', $e->getTraceAsString());
+                error_log('salesforce exception: '. $e->getMessage());
+                error_log('salesforce exception: '. $e->getTraceAsString());
             }
         }
     }
